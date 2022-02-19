@@ -1,3 +1,6 @@
+//static wave source with strong DMI 
+// effective velocity changes from 800 m/s to 1200 m/s step 50 m/s
+
 Nx:=2000
 Ny:=2000
 Nz:=1

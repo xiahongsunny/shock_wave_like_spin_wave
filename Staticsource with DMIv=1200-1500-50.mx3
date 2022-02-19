@@ -1,0 +1,50 @@
+Nx:=2000
+Ny:=2000
+Nz:=1
+c:=1e-9
+setgridsize(Nx, Ny, Nz)
+setcellsize(c, c, c)
+setpbc(50,50,1)
+
+outputformat = ovf1_text
+nd:=5*c
+
+
+cr := Ellipse(nd/2, nd)
+	ar := square(inf)
+	af := ar.sub(cr)
+	
+	defregion(1, cr)
+	defregion(2, af)
+
+
+D0:=0.0011367*2
+dds:=1.1367e-4
+
+for k:= 4; k <=10; k++ {
+	    th := 0
+	    theta := th * pi / 180
+		
+    	Dd := D0+k*dds
+
+		Dind = Dd
+		
+		Msat = 8e5
+		alpha = 0.01
+		Aex = 1.3e-11
+
+
+		m = uniform(1, 0, 0)
+		Am := 0.01
+		A := 0.1
+	
+	
+		B_ext.setregion(1, vector(Am*cos(theta), Am*sin(theta), A))
+		B_ext.setregion(2, vector(Am*cos(theta), Am*sin(theta), 0))
+		B_ext.setregion(1, vector(Am*cos(theta), Am*sin(theta), A))
+		
+		ta := 1e-9
+		autosave(m, ta/10)
+		snapshot(m.comp(2))
+		run(ta)
+		}

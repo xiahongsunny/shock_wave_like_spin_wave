@@ -1,0 +1,47 @@
+Nx := 200
+Ny := 8000
+Nz := 1
+c := 1e-9
+setgridsize(Nx, Ny, Nz)
+setcellsize(c, c, c)
+setpbc(50, 50, 1)
+
+outputformat = ovf1_text
+nd := 10 * c
+cr := cuboid(inf, nd, inf)
+ar := square(inf)
+af := ar.sub(cr)
+defregion(1, cr)
+defregion(2, af)
+
+jj0 := 7.190265153497231e12
+
+D0 := 0.002
+th := 0
+theta := th * pi / 180
+
+Dind = D0
+Msat = 8e5
+alpha = 0.02
+Aex = 1.3e-11
+m = uniform(1, 0, 0)
+
+Am := 0.01
+A := 0.1
+Ku1 = 4e3
+anisU = vector(0, 0, 1)
+
+B_ext.setregion(1, vector(Am*cos(theta), Am*sin(theta), A))
+B_ext.setregion(2, vector(Am*cos(theta), Am*sin(theta), 0))
+B_ext.setregion(1, vector(Am*cos(theta), Am*sin(theta), A))
+relax()
+
+
+
+	xi = 0.01
+	pol = 1
+	jc := jj0 
+	j = vector(0, -jc, 0)
+	ta := 100e-9
+	autosave(m, ta/100)
+	run(ta)

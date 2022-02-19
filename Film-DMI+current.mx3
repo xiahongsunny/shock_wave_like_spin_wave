@@ -1,3 +1,5 @@
+//static wave source in an ultra thin film with DMI and current
+
 Nx := 200
 Ny := 8000
 Nz := 1
